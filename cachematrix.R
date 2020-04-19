@@ -1,7 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
+## makeCacheMatrix takes a (hopefully invertible) matrix,
+## x, and returns a list of mutator and accessor
+## functions. cacheSolve takes a list (created by 
+## makeCacheMatrix, hopefully) and returns the
+## inverse of a matrix.
 
-## Write a short comment describing this function
+## makeCacheMatrix clears the variable that (will) hold(s)
+## the cached inverse, defines the mutators and accessors
+## and returns a list whose elements are the getters and
+## setters
 
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
@@ -18,10 +24,15 @@ makeCacheMatrix <- function(x = matrix()) {
   }
 
 
-## Write a short comment describing this function
+## cacheSolve takes a list (hopefully created by
+## makeCacheMatrix), checks if there is a cached
+## inverse and returns it if one is found. If not,
+## cacheSolve accesses the matrix object, computes
+## its inverse and assigns it to the inverse cache
+## variable ('i'), and returns the just-computed
+## inverse
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
   i <- x$getinverse()
   if(!is.null(i)) {
     message("getting cached data")
